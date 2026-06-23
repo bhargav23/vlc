@@ -1,0 +1,12 @@
+# Velocity Kitchen
+
+> Fresh-cut veggies, ready-to-cook kits, salads and cold-pressed juices delivered twice daily.
+
+Velocity Kitchen is a hyperlocal fresh-food delivery service. We source produce daily, wash and cut it to order, and deliver morning (6–8 AM) and evening (5–8 PM) slots. Free delivery on orders above Rs 200. Prepaid subscription tiers add bonus wallet value and free delivery.
+
+## Pages
+
+- [Home](/): Hero, categories, delivery slots, subscription teaser.
+- [Shop](/shop): Full menu — kits, fresh cuts, salads, juices, pantry. Filterable by category, type and price.
+- [Subscriptions](/subscriptions): Prepaid wallet tiers with bonus credit and free-delivery perks.
+- [About](/about): Who we are and how the daily fresh-cut model works.

@@ -1,0 +1,172 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/__l5e/assets-v1/b2de0d1c-f14a-490e-885c-7662940b49d3/plus-jakarta-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/__l5e/assets-v1/ddcf0d58-8807-4451-9f1a-910846d33ee4/plus-jakarta-sans-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-tomato: var(--tomato);
+  --color-tomato-foreground: var(--tomato-foreground);
+  --color-carrot: var(--carrot);
+  --color-leaf: var(--leaf);
+  --color-cream: var(--cream);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --shadow-soft: 0 8px 24px -12px color-mix(in oklab, var(--primary) 25%, transparent);
+  --shadow-pop: 0 20px 40px -20px color-mix(in oklab, var(--primary) 35%, transparent);
+}
+
+:root {
+  --radius: 1rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.22 0.04 150);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.04 150);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.04 150);
+
+  /* Vibrant fresh green */
+  --primary: oklch(0.62 0.19 145);
+  --primary-foreground: oklch(0.99 0.01 145);
+
+  --secondary: oklch(0.96 0.03 140);
+  --secondary-foreground: oklch(0.28 0.07 150);
+
+  --muted: oklch(0.97 0.01 140);
+  --muted-foreground: oklch(0.5 0.03 150);
+
+  /* Carrot orange accent */
+  --accent: oklch(0.74 0.18 55);
+  --accent-foreground: oklch(0.2 0.05 50);
+
+  /* Tomato red */
+  --tomato: oklch(0.65 0.22 27);
+  --tomato-foreground: oklch(0.99 0.01 27);
+
+  --carrot: oklch(0.74 0.18 55);
+  --leaf: oklch(0.62 0.19 145);
+  --cream: oklch(0.985 0.015 95);
+
+  --destructive: oklch(0.6 0.24 27);
+  --destructive-foreground: oklch(0.99 0.01 27);
+
+  --info: oklch(0.65 0.15 240);
+  --info-foreground: oklch(0.99 0.01 240);
+  --warning: oklch(0.78 0.16 75);
+  --warning-foreground: oklch(0.22 0.06 75);
+  --success: oklch(0.62 0.19 145);
+  --success-foreground: oklch(0.99 0.01 145);
+
+  /* WhatsApp brand green (#25D366) */
+  --whatsapp: oklch(0.74 0.17 152);
+  --whatsapp-foreground: oklch(0.99 0.01 152);
+
+  --border: oklch(0.92 0.02 140);
+  --input: oklch(0.92 0.02 140);
+  --ring: oklch(0.62 0.19 145);
+
+  --chart-1: oklch(0.62 0.19 145);
+  --chart-2: oklch(0.74 0.18 55);
+  --chart-3: oklch(0.65 0.22 27);
+  --chart-4: oklch(0.8 0.16 90);
+  --chart-5: oklch(0.55 0.15 200);
+
+  --sidebar: oklch(0.99 0.01 140);
+  --sidebar-foreground: oklch(0.22 0.04 150);
+  --sidebar-primary: oklch(0.62 0.19 145);
+  --sidebar-primary-foreground: oklch(0.99 0.01 145);
+  --sidebar-accent: oklch(0.96 0.03 140);
+  --sidebar-accent-foreground: oklch(0.28 0.07 150);
+  --sidebar-border: oklch(0.92 0.02 140);
+  --sidebar-ring: oklch(0.62 0.19 145);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .bg-hero-gradient {
+    background-image: radial-gradient(at 20% 10%, color-mix(in oklab, var(--leaf) 18%, transparent), transparent 50%),
+      radial-gradient(at 90% 80%, color-mix(in oklab, var(--carrot) 22%, transparent), transparent 55%),
+      linear-gradient(180deg, var(--cream), var(--background));
+  }
+  .bg-band {
+    background: linear-gradient(90deg, var(--leaf), color-mix(in oklab, var(--leaf) 70%, var(--carrot)));
+  }
+}
