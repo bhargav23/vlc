@@ -1,7 +1,7 @@
-import { Clock, Truck, Phone, Mail } from "lucide-react";
+import { Clock, Truck, Phone, Mail, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { BRAND_PHONE_DISPLAY, BRAND_PHONE_TEL, BRAND_EMAIL } from "@/lib/whatsapp";
-import logoAsset from "@/assets/velocity-kitchen-logo.jpeg.asset.json";
+import logoUrl from "@/assets/velocity-kitchen-logo.jpeg";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2">
             <img
-              src={logoAsset.url}
+              src={logoUrl}
               alt="Velocity Kitchen"
               className="h-9 w-auto object-contain shrink-0"
               loading="lazy"
@@ -61,6 +61,15 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
                 {BRAND_EMAIL}
               </a>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className="flex items-center gap-2 hover:text-foreground transition-colors"
+              >
+                <MapPin className="h-4 w-4" />
+                Contact page
+              </Link>
             </li>
           </ul>
         </div>

@@ -83,7 +83,7 @@ function CheckoutPage() {
     pincode: "",
     landmark: "",
     slot: "morning",
-    deliveryDate: format(addDays(MIN_DATE, 1), "yyyy-MM-dd"),
+    deliveryDate: format(MIN_DATE, "yyyy-MM-dd"),
   });
   const [dateOpen, setDateOpen] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});

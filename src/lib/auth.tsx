@@ -3,6 +3,7 @@ import type { Session, User } from "@supabase/supabase-js";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
+import { logger } from "@/lib/logger";
 
 type AuthContextValue = {
   session: Session | null;
@@ -40,7 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (requestId !== roleRequestId.current) return;
 
       if (error) {
-        console.error("Failed to load admin role", error);
+        logger.error("Failed to load admin role", error);
         setIsAdmin(false);
         setRoleError(error.message);
       } else {

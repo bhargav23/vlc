@@ -28,13 +28,13 @@ export function buildWhatsAppOrderMessage(opts: {
   if (items.length === 0) {
     lines.push("(no items yet — I'd like to place an order)");
   } else {
+    lines.push("Confirm your order?");
     for (const i of items) {
-      lines.push(`• ${i.product.name} x${i.qty} — Rs ${i.qty * i.product.price}`);
+      lines.push(`• ${i.product.name} x${i.qty} = ₹${i.qty * i.product.price}`);
     }
     lines.push("");
-    lines.push(`Subtotal: Rs ${subtotal}`);
-    lines.push(`Delivery: ${delivery === 0 ? "FREE" : `Rs ${delivery}`}`);
-    lines.push(`Total: Rs ${total}`);
+    lines.push("────────────────");
+    lines.push(`Total: ₹${total}`);
   }
 
   if (form) {

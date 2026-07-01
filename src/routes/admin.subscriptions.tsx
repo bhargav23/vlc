@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { logger } from "@/lib/logger";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -48,7 +49,7 @@ function AdminSubs() {
       ? await supabase.from("subscription_tiers").update(editing).eq("id", editing.id)
       : await supabase.from("subscription_tiers").insert(editing);
     if (error) {
-      console.error("[admin.subscriptions] save tier:", error);
+      logger.error("[admin.subscriptions] save tier:", error);
       return toast.error("Could not save tier. Please try again.");
     }
     setEditing(null);

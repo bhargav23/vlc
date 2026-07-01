@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Outlet, Link, createRootRouteWithContext, useRouter, HeadContent, Scripts } from "@tanstack/react-router";
 
+import { logger } from "@/lib/logger";
+
 // Inline the processed Tailwind output into the SSR shell so the page has
 // zero render-blocking stylesheet requests and no FOUC. Vite returns the
 // compiled CSS as a string with `?inline`.
@@ -28,7 +30,7 @@ function NotFoundComponent() {
 }
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
+  logger.error(error);
   const router = useRouter();
   return (
     <div className="flex min-h-dvh items-center justify-center bg-background px-4">
@@ -47,6 +49,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "theme-color", content: "#16a34a" },
       { title: "Fresh Cut Vegetables Delivery | Velocity Kitchen" },
       { name: "description", content: "Order fresh-cut vegetables, ready-to-cook kits, salads and cold-pressed juices from Velocity Kitchen, delivered twice daily." },
       { property: "og:site_name", content: "Velocity Kitchen" },
@@ -55,7 +58,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Order fresh-cut vegetables, ready-to-cook kits, salads and cold-pressed juices, delivered twice daily." },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [],
+    links: [
+      { rel: "manifest", href: "/site.webmanifest" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+    ],
     scripts: [
       {
         type: "application/ld+json",

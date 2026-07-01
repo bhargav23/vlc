@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { logger } from "@/lib/logger";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -59,7 +60,7 @@ function AdminCategories() {
       ? await supabase.from("categories").update(payload).eq("id", editingCat.id)
       : await supabase.from("categories").insert(payload);
     if (error) {
-      console.error("[admin.categories] save:", error);
+      logger.error("[admin.categories] save:", error);
       return toast.error("Could not save category. Please try again.");
     }
     toast.success("Saved");
@@ -72,7 +73,7 @@ function AdminCategories() {
     if (!confirm("Delete this category? Its groups and products must be removed first.")) return;
     const { error } = await supabase.from("categories").delete().eq("id", id);
     if (error) {
-      console.error("[admin.categories] delete:", error);
+      logger.error("[admin.categories] delete:", error);
       return toast.error("Could not delete category. Please remove its groups first.");
     }
     toast.success("Deleted");
@@ -92,7 +93,7 @@ function AdminCategories() {
       ? await supabase.from("product_groups").update(payload).eq("id", editingGroup.id)
       : await supabase.from("product_groups").insert(payload);
     if (error) {
-      console.error("[admin.categories] saveGroup:", error);
+      logger.error("[admin.categories] saveGroup:", error);
       return toast.error("Could not save group. Please try again.");
     }
     toast.success("Saved");
@@ -106,7 +107,7 @@ function AdminCategories() {
     if (!confirm("Delete this group? Its products must be removed first.")) return;
     const { error } = await supabase.from("product_groups").delete().eq("id", id);
     if (error) {
-      console.error("[admin.categories] deleteGroup:", error);
+      logger.error("[admin.categories] deleteGroup:", error);
       return toast.error("Could not delete group. Please remove its products first.");
     }
     toast.success("Deleted");

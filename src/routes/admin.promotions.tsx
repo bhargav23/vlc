@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
+import { logger } from "@/lib/logger";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -106,7 +107,7 @@ function AdminPromotions() {
       ? await supabase.from("promotions").update(payload).eq("id", editing.id)
       : await supabase.from("promotions").insert(payload);
     if (error) {
-      console.error("[admin.promotions] save:", error);
+      logger.error("[admin.promotions] save:", error);
       return toast.error("Could not save promotion. Please try again.");
     }
     toast.success("Saved");
@@ -120,7 +121,7 @@ function AdminPromotions() {
     if (!confirm("Delete this promotion? Linked items will be removed.")) return;
     const { error } = await supabase.from("promotions").delete().eq("id", id);
     if (error) {
-      console.error("[admin.promotions] delete:", error);
+      logger.error("[admin.promotions] delete:", error);
       return toast.error("Could not delete promotion.");
     }
     toast.success("Deleted");
@@ -295,7 +296,7 @@ function ItemsManager({ promotionId, onClose }: { promotionId: string; onClose: 
       discount_value: v,
     });
     if (error) {
-      console.error("[admin.promotions] add item:", error);
+      logger.error("[admin.promotions] add item:", error);
       return toast.error(error.code === "23505" ? "That product is already in another promotion item." : "Could not add product.");
     }
     setProductId("");

@@ -4,13 +4,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/lib/auth";
-import logoAsset from "@/assets/velocity-kitchen-logo.jpeg.asset.json";
+import logoUrl from "@/assets/velocity-kitchen-logo.jpeg";
 
 const nav = [
   { to: "/", label: "Home" },
   { to: "/shop", label: "Shop" },
   { to: "/subscriptions", label: "Subscriptions" },
   { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -22,7 +23,7 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 group" aria-label="Velocity Kitchen home">
           <img
-            src={logoAsset.url}
+            src={logoUrl}
             alt="Velocity Kitchen"
             className="h-10 sm:h-12 w-auto object-contain shrink-0"
             loading="eager"

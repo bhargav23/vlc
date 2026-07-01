@@ -38,18 +38,21 @@ export const Route = createFileRoute("/shop")({
   component: Shop,
 });
 
-const itemTypes = [
-  { id: "kits", label: "Kits", catSlug: "kits", groupNames: ["Mixed Veg & Curry Kits", "Chutney Kits"] },
-  { id: "fresh-cuts", label: "Fresh Cuts", catSlug: "fresh-cuts", groupNames: ["Cut Veggies", "Cut Leafy Veggies", "Cut Fruits"] },
-  { id: "salads", label: "Salads", catSlug: "ready", groupNames: ["Salads"] },
-  { id: "drinks", label: "Drinks", catSlug: "ready", groupNames: ["Health Drinks"] },
-  { id: "pantry", label: "Pantry", catSlug: "pantry", groupNames: ["Grated Items", "Masala Items", "Powders"] },
-];
-
 function Shop() {
   const { data: categories = [], isLoading } = useCatalog();
   const [query, setQuery] = useState("");
   const [typeId, setTypeId] = useState("all");
+
+  const itemTypes = useMemo(
+    () =>
+      categories.map((category) => ({
+        id: category.slug,
+        label: category.title,
+        catSlug: category.slug,
+        groupNames: category.groups.map((group) => group.name),
+      })),
+    [categories],
+  );
 
   type Row = { product: Product; catSlug: string; catTitle: string; groupName: string };
   const allRows: Row[] = useMemo(

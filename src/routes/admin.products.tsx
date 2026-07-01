@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { logger } from "@/lib/logger";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -63,7 +64,7 @@ function AdminProducts() {
       ? await supabase.from("products").update(payload).eq("id", editing.id)
       : await supabase.from("products").insert(payload);
     if (error) {
-      console.error("[admin.products] save:", error);
+      logger.error("[admin.products] save:", error);
       return toast.error("Could not save product. Please try again.");
     }
     toast.success("Saved");
@@ -76,7 +77,7 @@ function AdminProducts() {
     if (!confirm("Delete this product?")) return;
     const { error } = await supabase.from("products").delete().eq("id", id);
     if (error) {
-      console.error("[admin.products] delete:", error);
+      logger.error("[admin.products] delete:", error);
       return toast.error("Could not delete product. Please try again.");
     }
     toast.success("Deleted");
@@ -110,14 +111,14 @@ function AdminProducts() {
       contentType: file.type,
     });
     if (error) {
-      console.error("[admin.products] upload:", error);
+      logger.error("[admin.products] upload:", error);
       setUploading(false);
       return toast.error("Upload failed. Please try again.");
     }
     const prev = pathFromPublicUrl(editing.image_url);
     if (prev) {
       const { error: delErr } = await supabase.storage.from("product-images").remove([prev]);
-      if (delErr) console.error("[admin.products] remove prev:", delErr);
+      if (delErr) logger.error("[admin.products] remove prev:", delErr);
     }
     const { data } = supabase.storage.from("product-images").getPublicUrl(path);
     setEditing({ ...editing, image_url: data.publicUrl });
@@ -130,7 +131,7 @@ function AdminProducts() {
     if (prev) {
       const { error } = await supabase.storage.from("product-images").remove([prev]);
       if (error) {
-        console.error("[admin.products] remove:", error);
+        logger.error("[admin.products] remove:", error);
         return toast.error("Could not remove image. Please try again.");
       }
     }
@@ -156,7 +157,7 @@ function AdminProducts() {
                 <td className="p-3">
                   <div className="flex items-center gap-2">
                     <div className="h-9 w-9 rounded-md bg-secondary/60 overflow-hidden grid place-items-center text-lg shrink-0">
-                      {r.image_url ? <img src={r.image_url} alt="" className="h-full w-full object-cover" /> : <span aria-hidden>{r.emoji}</span>}
+                      {r.image_url ? <img src={r.image_url} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" /> : <span aria-hidden>{r.emoji}</span>}
                     </div>
                     <span>{r.name} <span className="text-muted-foreground text-xs">· {r.unit}</span></span>
                   </div>

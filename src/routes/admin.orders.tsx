@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
 import { format } from "date-fns";
 import { CalendarIcon, ClipboardList, Search, X } from "lucide-react";
+import { logger } from "@/lib/logger";
 import { supabase } from "@/integrations/supabase/client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -94,7 +95,7 @@ function AdminOrders() {
 
       const { data, count, error } = await query;
       if (error) {
-        console.error("[admin.orders] list:", error);
+        logger.error("[admin.orders] list:", error);
         toast.error("Could not load orders.");
         return { rows: [], count: 0 };
       }
@@ -127,7 +128,7 @@ function AdminOrders() {
       invalidateOrders();
     },
     onError: (e) => {
-      console.error("[admin.orders] update status:", e);
+      logger.error("[admin.orders] update status:", e);
       toast.error("Could not update status. Please try again.");
     },
   });
@@ -142,7 +143,7 @@ function AdminOrders() {
       invalidateOrders();
     },
     onError: (e) => {
-      console.error("[admin.orders] update slot:", e);
+      logger.error("[admin.orders] update slot:", e);
       toast.error("Could not update slot. Please try again.");
     },
   });
@@ -158,7 +159,7 @@ function AdminOrders() {
       invalidateOrders();
     },
     onError: (e) => {
-      console.error("[admin.orders] bulk update:", e);
+      logger.error("[admin.orders] bulk update:", e);
       toast.error("Could not update orders. Please try again.");
     },
   });

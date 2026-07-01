@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { logger } from "@/lib/logger";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -62,7 +63,7 @@ function AdminSite() {
       .from("site_settings")
       .upsert({ key, value }, { onConflict: "key" });
     if (error) {
-      console.error("[admin.site] save:", error);
+      logger.error("[admin.site] save:", error);
       toast.error("Could not save. Please try again.");
       return false;
     }
@@ -114,7 +115,7 @@ function AdminSite() {
       contentType: pendingFile.type,
     });
     if (error) {
-      console.error("[admin.site] upload:", error);
+      logger.error("[admin.site] upload:", error);
       setUploading(false);
       return toast.error("Upload failed. Please try again.");
     }
@@ -124,7 +125,7 @@ function AdminSite() {
     await persistFitAndPosition();
     if (ok && prev && prev.startsWith("site/")) {
       const { error: delErr } = await supabase.storage.from("product-images").remove([prev]);
-      if (delErr) console.error("[admin.site] remove prev:", delErr);
+      if (delErr) logger.error("[admin.site] remove prev:", delErr);
     }
     setUploading(false);
     if (ok) {
@@ -219,6 +220,8 @@ function AdminSite() {
                   <img
                     src={activeImage}
                     alt="Hero preview"
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full select-none pointer-events-none"
                     style={{ objectFit: fit, objectPosition: positionStr }}
                     draggable={false}
@@ -247,6 +250,8 @@ function AdminSite() {
                   <img
                     src={activeImage}
                     alt="Hero preview (mobile)"
+                    loading="lazy"
+                    decoding="async"
                     className="h-full w-full select-none pointer-events-none"
                     style={{ objectFit: fit, objectPosition: positionStr }}
                     draggable={false}
