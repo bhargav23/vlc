@@ -16,11 +16,11 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Fresh-cut vegetables, meal kits, salads and juices prepared daily and delivered to your door." },
       { name: "twitter:title", content: "Fresh Cut Vegetables Delivery | Velocity Kitchen" },
       { name: "twitter:description", content: "Fresh-cut vegetables, meal kits, salads and juices prepared daily and delivered to your door." },
-      { property: "og:url", content: "https://velocitykitchen.lovable.app/" },
+      { property: "og:url", content: "https://velocitykitchen.in/" },
       { property: "og:type", content: "website" },
     ],
     links: [
-      { rel: "canonical", href: "https://velocitykitchen.lovable.app/" },
+      { rel: "canonical", href: "https://velocitykitchen.in/" },
       { rel: "preload", as: "image", href: heroImgDefault, fetchpriority: "high" } as unknown as { rel: string; href: string },
     ],
   }),

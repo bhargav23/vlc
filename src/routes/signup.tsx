@@ -13,11 +13,11 @@ export const Route = createFileRoute("/signup")({
       { name: "description", content: "Create your Velocity Kitchen account to place orders and manage subscriptions." },
       { property: "og:title", content: "Create account — Velocity Kitchen" },
       { property: "og:description", content: "Join Velocity Kitchen — fresh-cut food delivered twice daily." },
-      { property: "og:url", content: "https://velocitykitchen.lovable.app/signup" },
+      { property: "og:url", content: "https://velocitykitchen.in/signup" },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex, follow" },
     ],
-    links: [{ rel: "canonical", href: "https://velocitykitchen.lovable.app/signup" }],
+    links: [{ rel: "canonical", href: "https://velocitykitchen.in/signup" }],
   }),
   component: SignupPage,
 });

@@ -16,10 +16,10 @@ export const Route = createFileRoute("/subscriptions")({
       { name: "description", content: "Top up and save: pay less, get more. Free delivery on higher tiers." },
       { property: "og:title", content: "Prepaid Subscriptions — Velocity Kitchen" },
       { property: "og:description", content: "Top up your wallet, get bonus value and free delivery on higher tiers." },
-      { property: "og:url", content: "https://velocitykitchen.lovable.app/subscriptions" },
+      { property: "og:url", content: "https://velocitykitchen.in/subscriptions" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://velocitykitchen.lovable.app/subscriptions" }],
+    links: [{ rel: "canonical", href: "https://velocitykitchen.in/subscriptions" }],
   }),
   component: SubscriptionsPage,
 });

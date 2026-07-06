@@ -25,11 +25,11 @@ export const Route = createFileRoute("/checkout")({
       { name: "description", content: "Confirm your delivery address, pick a slot and place your fresh order." },
       { property: "og:title", content: "Checkout — Velocity Kitchen" },
       { property: "og:description", content: "Morning 6–8 AM or evening 5–8 PM. Free delivery above Rs 200." },
-      { property: "og:url", content: "https://velocitykitchen.lovable.app/checkout" },
+      { property: "og:url", content: "https://velocitykitchen.in/checkout" },
       { property: "og:type", content: "website" },
       { name: "robots", content: "noindex" },
     ],
-    links: [{ rel: "canonical", href: "https://velocitykitchen.lovable.app/checkout" }],
+    links: [{ rel: "canonical", href: "https://velocitykitchen.in/checkout" }],
   }),
   component: CheckoutPage,
 });

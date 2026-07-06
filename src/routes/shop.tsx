@@ -18,10 +18,10 @@ export const Route = createFileRoute("/shop")({
       { property: "og:description", content: "Shop fresh-cut vegetables, ready-to-cook kits, salads, juices and pantry essentials." },
       { name: "twitter:title", content: "Buy Fresh Cut Vegetables Online | Velocity Kitchen" },
       { name: "twitter:description", content: "Shop fresh-cut vegetables, ready-to-cook kits, salads, juices and pantry essentials." },
-      { property: "og:url", content: "https://velocitykitchen.lovable.app/shop" },
+      { property: "og:url", content: "https://velocitykitchen.in/shop" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://velocitykitchen.lovable.app/shop" }],
+    links: [{ rel: "canonical", href: "https://velocitykitchen.in/shop" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/shop")({
           "@type": "CollectionPage",
           name: "Fresh-cut vegetables and ready-to-cook food",
           description: "Buy chopped vegetables, meal kits, salads, juices and pantry essentials online for twice-daily delivery.",
-          url: "https://velocitykitchen.lovable.app/shop",
+          url: "https://velocitykitchen.in/shop",
         }),
       },
     ],
@@ -85,12 +85,18 @@ function Shop() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return allRows.filter((r) => {
-      if (typeId !== "all") {
-        const t = itemTypes.find((it) => it.id === typeId);
-        if (!t || r.catSlug !== t.catSlug || !t.groupNames.includes(r.groupName)) return false;
-      }
+      if (typeId !== "all" && r.catSlug !== typeId) return false;
       if (r.product.price < effective[0] || r.product.price > effective[1]) return false;
-      if (q && !r.product.name.toLowerCase().includes(q) && !r.groupName.toLowerCase().includes(q)) return false;
+      if (
+        q &&
+        ![
+          r.product.name,
+          r.groupName,
+          r.catTitle,
+          r.product.tag ?? "",
+        ].some((value) => value.toLowerCase().includes(q))
+      )
+        return false;
       return true;
     });
   }, [allRows, query, typeId, effective]);

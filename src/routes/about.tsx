@@ -8,10 +8,10 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "We deliver health to your door — fresh-cut, ready and wholesome." },
       { property: "og:title", content: "About Velocity Kitchen" },
       { property: "og:description", content: "Spend less time in the kitchen and more time living." },
-      { property: "og:url", content: "https://velocitykitchen.lovable.app/about" },
+      { property: "og:url", content: "https://velocitykitchen.in/about" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://velocitykitchen.lovable.app/about" }],
+    links: [{ rel: "canonical", href: "https://velocitykitchen.in/about" }],
   }),
   component: About,
 });

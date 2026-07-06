@@ -10,10 +10,10 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Reach out by phone, email, or Google Maps for fresh delivery support." },
       { property: "og:title", content: "Contact Velocity Kitchen" },
       { property: "og:description", content: "Get in touch for orders, delivery help, or kitchen support." },
-      { property: "og:url", content: "https://velocitykitchen.lovable.app/contact" },
+      { property: "og:url", content: "https://velocitykitchen.in/contact" },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "https://velocitykitchen.lovable.app/contact" }],
+    links: [{ rel: "canonical", href: "https://velocitykitchen.in/contact" }],
   }),
   component: ContactPage,
 });

@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Clock, Leaf, ListChecks, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const URL = "https://velocitykitchen.lovable.app/blog/healthy-grocery-delivery-guide";
+const URL = "https://velocitykitchen.in/blog/healthy-grocery-delivery-guide";
 
 export const Route = createFileRoute("/blog/healthy-grocery-delivery-guide")({
   head: () => ({
