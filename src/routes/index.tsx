@@ -10,12 +10,12 @@ import { SITE_SETTING_KEYS, useSiteSetting, DEFAULT_HERO_FIT, DEFAULT_HERO_POSIT
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Fresh Cut Vegetables Delivery | Velocity Kitchen" },
-      { name: "description", content: "Order fresh-cut vegetables, ready-to-cook kits, salads and cold-pressed juices from Velocity Kitchen, delivered twice daily." },
-      { property: "og:title", content: "Fresh Cut Vegetables Delivery | Velocity Kitchen" },
-      { property: "og:description", content: "Fresh-cut vegetables, meal kits, salads and juices prepared daily and delivered to your door." },
-      { name: "twitter:title", content: "Fresh Cut Vegetables Delivery | Velocity Kitchen" },
-      { name: "twitter:description", content: "Fresh-cut vegetables, meal kits, salads and juices prepared daily and delivered to your door." },
+      { title: "Fresh-Cut Vegetable Delivery | Velocity Kitchen" },
+      { name: "description", content: "Spend less time in the kitchen. Order fresh-cut vegetables, ready-to-cook kits, and cold-pressed juices delivered twice daily. Free delivery above Rs 200/-." },
+      { property: "og:title", content: "Fresh-Cut Vegetable Delivery | Velocity Kitchen" },
+      { property: "og:description", content: "Spend less time in the kitchen. Order fresh-cut vegetables, ready-to-cook kits, and cold-pressed juices delivered twice daily. Free delivery above Rs 200/-." },
+      { name: "twitter:title", content: "Fresh-Cut Vegetable Delivery | Velocity Kitchen" },
+      { name: "twitter:description", content: "Spend less time in the kitchen. Order fresh-cut vegetables, ready-to-cook kits, and cold-pressed juices delivered twice daily. Free delivery above Rs 200/-." },
       { property: "og:url", content: "https://velocitykitchen.in/" },
       { property: "og:type", content: "website" },
     ],
@@ -45,7 +45,7 @@ function Home() {
               <Sparkles className="h-3.5 w-3.5" /> Cut fresh every morning
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
-              Fresh-cut vegetables <span className="text-primary">delivered</span> to your door
+              Fresh-cut vegetables <span className="text-primary">delivered</span> across Bhimavaram
             </h1>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-xl">
               Spend less time in the kitchen and more time living. Fresh-cut veggies,

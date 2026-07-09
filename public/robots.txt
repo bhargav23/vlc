@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /checkout
 
-Sitemap: https://velocitykitchen.lovable.app/sitemap.xml
+Sitemap: https://velocitykitchen.in/sitemap.xml

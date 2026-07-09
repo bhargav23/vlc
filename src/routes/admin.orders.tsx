@@ -272,6 +272,7 @@ function AdminOrders() {
               <th className="p-3 text-left">When</th>
               <th className="p-3 text-left">Customer</th>
               <th className="p-3 text-left hidden md:table-cell">Items</th>
+              <th className="p-3 text-left hidden sm:table-cell">Delivery</th>
               <th className="p-3 text-left hidden sm:table-cell">Slot</th>
               <th className="p-3 text-right">Total</th>
               <th className="p-3">Status</th>
@@ -325,6 +326,9 @@ function AdminOrders() {
                     <div className="text-xs text-muted-foreground">{o.phone}</div>
                   </td>
                   <td className="p-3 hidden md:table-cell text-muted-foreground">{itemsCount}</td>
+                  <td className="p-3 hidden sm:table-cell text-muted-foreground whitespace-nowrap">
+                    {o.delivery_date ? format(new Date(o.delivery_date), "dd MMM") : "—"}
+                  </td>
                   <td className="p-3 hidden sm:table-cell" onClick={(e) => e.stopPropagation()}>
                     <Select value={o.slot} onValueChange={(v) => updateSlot.mutate({ id: o.id, slot: v as Slot })}>
                       <SelectTrigger className="h-8 w-28 text-xs capitalize"><SelectValue /></SelectTrigger>
@@ -388,10 +392,7 @@ function AdminOrders() {
                 <p className="text-xs uppercase text-muted-foreground font-medium">Delivery</p>
                 <p>{open.address}, {open.city} - {open.pincode}</p>
                 {open.landmark && <p className="text-muted-foreground">Landmark: {open.landmark}</p>}
-                <p>Slot: <span className="capitalize font-medium">{open.slot}</span></p>
-              </div>
-
-              <div className="rounded-xl border border-border p-3">
+                <p>Delivery date: <span className="font-medium">{open.delivery_date ? format(new Date(open.delivery_date), "EEEE, MMM d") : "TBD"}</span></p>
                 <h3 className="font-semibold mb-2">Items</h3>
                 <ul className="space-y-1">
                   {items.map((i) => (
